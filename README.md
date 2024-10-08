@@ -1,5 +1,5 @@
 # Github Random Repository ⚙️
-## Minimalism finder 🔍
+## Minimalistic finder 🔍
 
 
 ### Roadmap project: https://roadmap.sh/projects/github-random-repo
