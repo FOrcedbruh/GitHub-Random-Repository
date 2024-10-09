@@ -7,9 +7,10 @@ interface ListPropsType {
     langs: ILang[]
     setLangs: Dispatch<SetStateAction<ILang[]>>
     setLang: Dispatch<SetStateAction<string>>
+    setSelect: Dispatch<SetStateAction<boolean>>
 }
 
-const List: React.FC<ListPropsType> = ({ langs, setLangs, setLang }) => {
+const List: React.FC<ListPropsType> = ({ langs, setLangs, setLang, setSelect }) => {
 
     const src: string = "https://raw.githubusercontent.com/kamranahmedse/githunt/master/src/components/filters/language-filter/languages.json"
 
@@ -24,13 +25,19 @@ const List: React.FC<ListPropsType> = ({ langs, setLangs, setLang }) => {
         getLangs()
     }, [langs])
 
+
+    const click = (value: string) => {
+        setLang(value)
+        setSelect(false)
+    }
+
     return (
         <ul>
-            {langs?.map(lang => {
+            {langs ? langs?.map(lang => {
                 return (
-                    <li onClick={() => setLang(lang.value)} key={lang.title}>{lang.value}</li>
+                    <li onClick={() => click(lang.value)} key={lang.title}>{lang.value}</li>
                 )
-            })}
+            }) : <>Loading...</>}
         </ul>
     )
 }
