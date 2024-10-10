@@ -33,9 +33,9 @@ const List: React.FC<ListPropsType> = ({ langs, setLangs, setLang, setSelect }) 
 
     return (
         <ul>
-            {langs ? langs?.map(lang => {
+            {langs ? langs?.map((lang, index) => {
                 return (
-                    <li onClick={() => click(lang.value)} key={lang.title}>{lang.value}</li>
+                    <li onClick={() => click(lang.value)} key={index}>{lang.value}</li>
                 )
             }) : <>Loading...</>}
         </ul>

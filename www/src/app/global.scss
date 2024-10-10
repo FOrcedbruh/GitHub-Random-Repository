@@ -84,5 +84,47 @@ body {
                 }
             }
         }
+
+        .repo {
+            width: 70%;
+            height: 180px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 12px;
+            border: 1px solid #fff;
+            background-color: #1c1c1c;
+            padding: 10px;
+
+            h4 {
+                color: #fff;
+                align-self: flex-start;
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                color: #c7c7c7;
+            }
+
+            .topics {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 30px;
+                padding: 0 20px;
+
+                p {
+                    color: #fff;
+                    font-size: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 3px;
+                }
+            }
+        }
     }
 }
