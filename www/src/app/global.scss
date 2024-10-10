@@ -23,9 +23,10 @@ body {
     height: 100vh;
     background-color: #000;
 
+
     .finder {
         width: 50%;
-        height: 300px;
+        height: 400px;
         border-radius: 14px;
         display: flex;
         flex-direction: column;
@@ -34,6 +35,13 @@ body {
         padding: 10px;
         background-color: #2a2a2a;
         gap: 10px;
+
+        @media only screen and (max-width: 700px) {
+            width: 80%;
+        }
+        @media only screen and (max-width: 500px) {
+            width: 96%;
+        }
 
         h2 {
             color: #fff;
@@ -125,6 +133,21 @@ body {
                     gap: 3px;
                 }
             }
+        }
+
+        .loading {
+            color: #fff;
+        }
+
+        .searchBtn {
+            width: 70%;
+            height: 40px;
+            outline: none;
+            background-color: #000;
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
         }
     }
 }

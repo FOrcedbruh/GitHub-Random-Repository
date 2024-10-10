@@ -14,6 +14,7 @@ const App: React.FC = () => {
     const [langs, setLangs] = useState<ILang[]>([])
     const [lang, setLang] = useState<string>("")
     const [select, setSelect] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [repos, setRepos] = useState<IRepo[]>([])
 
@@ -22,14 +23,21 @@ const App: React.FC = () => {
 
 
     const getRepo = async () => {
-        const res = await axios.get(src, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
+        try {
+            setIsLoading(true)
+            const res = await axios.get(src, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
 
-        setRepos(res.data.items)
-        console.log(res.data.items)
+            setRepos(res.data.items)
+            console.log(res.data.items)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     function getRandomInt(max: number) {
@@ -38,12 +46,12 @@ const App: React.FC = () => {
 
     const random: number = getRandomInt(30)
 
-    useEffect(() => {
+    const search = () => {
         setRepos([])
         if (lang) {
             getRepo()
         }
-    }, [lang])
+    }
 
 
     return (
@@ -64,6 +72,11 @@ const App: React.FC = () => {
                         <p> <img src={starIcon} alt="" width={10} height={10}/>{repos[random].stargazers_count}</p>
                     </div>
                 </div>}
+                {isLoading && <p className="loading">Loading...</p>}
+                {!isLoading && <button className="searchBtn" onClick={search}>
+                    {repos.length === 0 && "Search"}
+                    {repos.length > 0 && "Refresh"}
+                </button>}
             </div>
        </main>
     )
